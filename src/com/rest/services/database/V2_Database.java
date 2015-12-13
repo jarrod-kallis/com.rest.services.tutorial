@@ -4,26 +4,50 @@ import java.sql.SQLException;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import com.rest.services.dao.OracleTutorialQuery;
 
 @Path("/v2/database")
 public class V2_Database {
 
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response defaultErrorMessage() {
+		return Response.status(400)
+				.entity("Error: please specify a department name for this search using URL: /database/employees/departments/{department-name}")
+				.build();
+	}
+
 	@Path("/employees")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getEmployees(@QueryParam("department-name") String departmentName) throws SQLException {
-		if (departmentName == null) {
-			return Response.status(500).entity("Please specify a department name for this search").build();
-		}
+	public Response employeesDefaultErrorMessage() {
+		return defaultErrorMessage();
+	}
 
-		Response response = OracleTutorialQuery.getAllEmployeesByDepartmentName(departmentName);
+	@Path("/employees/departments")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response departmentsDefaultErrorMessage() {
+		return defaultErrorMessage();
+	}
 
-		return response;
+	@Path("/employees/departments/{department-name}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getEmployeesByDepartmentName(@PathParam("department-name") String departmentName)
+			throws SQLException {
+		return new V1_Database().getEmployeesByDepartmentName(departmentName);
+		// if (departmentName == null) {
+		// return Response.status(500).entity("Please specify a department name
+		// for this search").build();
+		// }
+		//
+		// Response response =
+		// OracleTutorialQuery.getAllEmployeesByDepartmentName(departmentName);
+		//
+		// return response;
 	}
 }
