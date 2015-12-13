@@ -40,14 +40,5 @@ public class V2_Database {
 	public Response getEmployeesByDepartmentName(@PathParam("department-name") String departmentName)
 			throws SQLException {
 		return new V1_Database().getEmployeesByDepartmentName(departmentName);
-		// if (departmentName == null) {
-		// return Response.status(500).entity("Please specify a department name
-		// for this search").build();
-		// }
-		//
-		// Response response =
-		// OracleTutorialQuery.getAllEmployeesByDepartmentName(departmentName);
-		//
-		// return response;
 	}
 }
