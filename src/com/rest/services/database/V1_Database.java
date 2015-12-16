@@ -9,6 +9,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.rest.services.classes.ResponseMessage;
 import com.rest.services.dao.OracleTutorialQuery;
 
 @Path("/v1/database")
@@ -29,7 +30,11 @@ public class V1_Database {
 	public Response getEmployeesByDepartmentName(@QueryParam("department-name") String departmentName)
 			throws SQLException {
 		if (departmentName == null) {
-			return Response.status(500).entity("Please specify a department name for this search").build();
+			ResponseMessage responseMessage = new ResponseMessage();
+			responseMessage.setSuccessful(false);
+			responseMessage.setMessage("Please specify a department name for this search");
+
+			return Response.status(500).entity(responseMessage).build();
 		}
 
 		Response response = OracleTutorialQuery.getAllEmployeesByDepartmentName(departmentName);

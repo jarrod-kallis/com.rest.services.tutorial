@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Rest Example: Post</title>
+		
+		<script src="js/jquery-min.js"></script>
+		<script src="js/polyfill.js"></script>
+		<script src="js/post.js"></script>
+	</head>
+	<body>
+	
+		<h1>API Post Example</h1>
+		
+		<form id="post_example" name="post_example" action="#">
+			<table>
+				<tr>
+					<td>Id</td>
+					<td><input type="text" name="id" id="id" maxlength="10" value="1234"></td>
+				</tr>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" name="name" id="name" maxlength="50" value="Jarrod"></td>
+				</tr>
+				<tr>
+					<td>Job</td>
+					<td><input type="text" name="job" id="job" maxlength="50" value="Developer"></td>
+				</tr>
+				<tr>
+					<td>Manager Id</td>
+					<td><input type="text" name="managerId" id="managerId" maxlength="10" value="7839"></td>
+				</tr>
+				<tr>
+					<td>Hire Date</td>
+					<td><input type="text" name="hireDate" id="hireDate" maxlength="10" value="2003-09-08"></td>
+				</tr>
+				<tr>
+					<td>Salary</td>
+					<td><input type="text" name="salary" id="salary" maxlength="10" value="10000"></td>
+				</tr>
+				<tr>
+					<td>Commission</td>
+					<td><input type="text" name="commission" id="commission" maxlength="10" value="500"></td>
+				</tr>
+				<tr>
+					<td>Department Id</td>
+					<td><input type="text" name="departmentId" id="departmentId" maxlength="3" value="10"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="button" name="submit_it" id="submit_it" value="Submit"> Using Jackson Mapper</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="button" name="submit_it2" id="submit_it2" value="Submit v2"> Using JSON Array and Object</td>
+				</tr>
+			</table>
+		</form>
+		
+		<br />
+		<div id="div_ajaxResponse"></div>
+	
+	</body>
+</html>
